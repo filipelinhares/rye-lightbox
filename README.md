@@ -53,3 +53,8 @@ script.js
 
 Lightbox.init('.ativar', '.lightbox', '.fechar');
 ```
+##Estilização
+
+A estilização do lightbox é por sua conta, coloque a cor que preferir, posicione o botão aonde bem quiser. 
+
+ps: Só não esqueça de declarar uma altura(height) e uma largura(width) fixa para seu lightbox.
