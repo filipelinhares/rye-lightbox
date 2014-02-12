@@ -1,60 +1,71 @@
 #Rye Lightbox
 
-##O que é?
-Rye Lightbox, é um plugin de lightbox, feito para a biblioteca [Rye.JS](http://www.ryejs.com)
+##What?
+Rye Lightbox is a plugin to  [Rye.JS](http://www.ryejs.com).
 
-##Como utilizar?
-Faça o download da [Rye.JS](http://www.ryejs.com) e da Rye Ligthbox. Faça a chamada dos dois no seu código normalmente.
+##What's Rye?
+Rye is a lightweight javascript library for DOM manipulation and events with support for all modern browsers, including IE9+. It has support for touch events/gestures, an event emitter, isolated DOM events and more.
 
-Após isso você deve criar uma div que será seu lightbox:
+##How use?
 
+Make download of [Ryejs](http://ryejs.com/dist/rye-0.1.0.min.js) and [Rye Lightbox](http://filipelinhares.github.io/rye-lightbox/src/ryelightbox.min.js), and include in your page;
+
+###Initialization.
+
+You need create your lightbox element.
 ```
 <div class="lighbox">
-	Conteúdo do seu lighbox aqui.
+	//Content here. Text, images...
 </div>
 ```
-Essa div, devera conter um o botão de fechar:
+Inside this element create your close button:
 
 ```
 <div class="lightbox">
-	<span class="fechar">x</span>
+	<span class="close-button">X</span>
 </div>
 ```
+*You can put a image like a live [example](http://filipelinhares.github.io/rye-lightbox)*
 
-Feito isso, precisamos adicionar o efeito, é hora de javascript.
-Para utilizar basta você fazer a chamada da seguinte função.
+##Now the javascript time.
+First you need call the plugin using `Rye.require()`
 
-`Lightbox.init('disparo', 'elem-lightbox', 'elem-fechar')`
+`var Lightbox = Rye.require('lightbox');`
 
-###disparo:8
-É o elemento que acionara o ligthbox (*.classe*, *#id*, *elemento*);
+Now Lightbox has a method `init` with all configurations you need to use the plugin.
 
-###elem-lightbox:
-É o seu content do lightbox no nosso exemplo no caso seria o:
-*.lightbox*
+`Lightbox.init('call-button', '#lightbox-element', '.close-button', overlay)`
 
-###fechar
-É o botão que será usado para fechar o lightbox.
+###call-button
+A css selector of your element that activate the lightbox.
 
-##Exemplo
+###lightbox-element
+A  css selector of your lightbox element.
 
+###closed-button
+A css selector of your close button.
+
+###overlay
+Set true or false, for use or not overlay in lightbox.
+
+##Full code example.
+
+*[index.html]*
 ```
-index.html
-
 <div class="lightbox">
-	Conteúdo do nosso Lightbox.
-    <span class="fechar">X</span>
+	My Awesome lightbox
+    <span class="close-button">X</span>
 </div>
 
-<button class="ativar">Abrir Lightbox</button>
+<button class="active">Show Lightbox</button>
 ```
+---
+*[script.js]*
 ```
-script.js
+var Lightbox = Rye.require('lightbox');
 
-Lightbox.init('.ativar', '.lightbox', '.fechar');
+Lightbox.init('.active', '.lightbox', '.close-button', true);
 ```
-##Estilização
+##Style
 
-A estilização do lightbox é por sua conta, coloque a cor que preferir, posicione o botão aonde bem quiser. 
-
-ps: Só não esqueça de declarar uma altura(height) e uma largura(width) fixa para seu lightbox.
+You decide this, all style of your lightbox is your choice, background color, box shadow, close button position.
