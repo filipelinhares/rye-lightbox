@@ -5,7 +5,7 @@
     <title>Rye Lightbox</title>
 
     <!-- Link Css -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
@@ -16,29 +16,25 @@
 
     <!-- Div do Lightbox -->
     <div class="lightbox">
-        <p class='title-lightbox'>
-            RyeLightbox - Plugin para <a href="http://www.ryejs.com">Rye.js</a>
-        </p>
-
-        <p>Rye is a lightweight javascript library for DOM manipulation and events with support for all modern browsers, including IE9+. It has support for touch events/gestures, an event emitter, isolated DOM events and more.</p>
-        <span class="logo">Rye.JS</span>
-        <span class="fechar">X</span>
+        <img src="img/img.jpg" alt="">
+        <span class="close-button"><img src="img/close.png" alt=""></span>
     </div>
 
     <div class="botoes">
-        <button class="botao botao-demo">Demo</button>
-        <a href="https://github.com/FilipeLinhares/rye-lightbox" class="botao botao-download">Download</a>
+        <button class="botao demo-button">Demo</button>
+        <a href="https://github.com/filipelinhares/rye-lightbox/src/ryelightbox.min.js" class="botao botao-download">Download</a>
     </div>
 
     <footer class="footer">
-        Desenvolvido por - <a href="https://github.com/FilipeLinhares">Filipe Linhares</a>
+        Made by - <a href="https://github.com/filipelinhares">Filipe Linhares</a>
     </footer>
 
     <!-- Load Scripts -->
     <script src="http://ryejs.com/dist/rye-0.1.0.min.js"></script>
-    <script src="src/ryelightbox.js"></script>
+    <script src="src/ryelightbox.min.js"></script>
     <script>
-        Ligthbox.init('.botao-demo', '.lightbox','.fechar');
+        var Ligthbox = Rye.require('ligthbox');
+        Ligthbox.init('.demo-button', '.lightbox','.close-button', true);
     </script>
 </body>
 </html>

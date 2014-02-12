@@ -1,56 +1,60 @@
-/**
- *  $~ Rye LightBox --version
- *  // 0.0.1
- */
+/*
+# Rye Lightbox.
+# Version 1.0.0
+*/
+Rye.define('ligthbox', function() {
 
-Rye.define('Ligthbox', function() {
+  function init(element, contentLightbox, closeButton, confirm) {
 
-  function lightBox(element, elementlight, botaofechar) {
+    //Store content value.
+    var contentLightbox = Rye(contentLightbox)
+      , overlay;
 
-    //Deixa o elemento do lightbox escondido.
-    Rye(elementlight).hide();
-
+    contentLightbox.hide();
     Rye(element).on('click', function(e) {
 
+      //Verify if overlay is true;
+      if(confirm){
+        Rye('body').append('<div class="overlay"></div>');
+          overlay =  Rye('.overlay');
+          overlay.css({
+            width: '100%'
+            , height: '3000px'
+            , background: 'rgba(0,0,0,0.5)'
+            , position: 'fixed'
+            , top: '0'
+          })
+      }
 
-      /**
-       * Pega automaticamente a largura da div e a divide por 2
-       * para poder alinhar o lightbox exatamente no centro.
-       */
-      var largura = Rye(elementlight).css('width')
-      altura = Rye(elementlight).css('height')
+      //Get width, height values and divide by 2;
+      var width = parseInt(contentLightbox.css('width'), 10)
+        , height = parseInt(contentLightbox.css('height'), 10)
+        , halfWidth = width / 2
+        , halfHeight = height / 2;
 
-      largura = largura.replace('px', '') / 2
-      altura = altura.replace('px', '') / 2
-
-
-      /**
-       *Declara os estilos ao elemento para poder
-       *centralizar, a váriavel 'largura' é resultado
-       *da largura da div dividio por dois.
-       */
-      Rye(elementlight).css({
+      // Set Style to content lightbox.
+      contentLightbox.css({
           position: 'absolute'
         , top: '50%'
         , left: '50%'
-        , margin: '-' + altura + 'px 0 0 -' + largura + 'px'
+        , margin: '-' + halfHeight + 'px 0 0 -' + halfWidth + 'px'
       })
+      contentLightbox.css('z-index','3')
 
-      //Exibe o lightshow
-      Rye(elementlight).show()
 
+      //Show the lightbox.
+      contentLightbox.show()
     })
 
-
-    //Manipulação do botão fechar
-    Rye(botaofechar).on('click', function() {
-      Rye(elementlight).hide();
+    //Close Button
+    Rye(closeButton).on('click', function() {
+      contentLightbox.hide()
+      overlay.hide()
     })
   }
 
   return {
-    init: lightBox
+    init: init
   }
 
 })
-var Ligthbox = Rye.require('Ligthbox');
